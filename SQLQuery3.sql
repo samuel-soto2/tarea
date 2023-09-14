@@ -2,11 +2,25 @@
 USE Portalweb
 
 CREATE TABLE Usuarios(
-Cod_Usuario int identity(1,1),
+Id_Usuario int identity(1,1),
 Nombre varchar(50),
 Apellido varchar(50),
-Correo varchar(70),
+Correo varchar(80),
 Edad int,
 Usuario varchar(50),
 Contraseña varchar(50)
+)
+
+Alter table Usuarios add Id_rol int 
+
+select * from Usuarios
+
+Create table Permisos(
+Id_Permisos int identity(1,1),
+Nombre_Permiso varchar (50)
+)
+
+create table Roles(
+Id_rol int identity(1,1),
+Nombre_Rol varchar(50)
 )
