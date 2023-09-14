@@ -24,3 +24,19 @@ create table Roles(
 Id_rol int identity(1,1),
 Nombre_Rol varchar(50)
 )
+
+create table Roles_Permisos(
+Id_rol_permiso int identity (1,1),
+Id_Rol int,
+Id_permiso int,
+Estado bit
+)
+
+drop table Roles_Permisos;
+
+
+insert into Roles values ('Admin')
+insert into Roles values ('User')
+
+select * from Roles
+
