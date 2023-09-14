@@ -66,10 +66,10 @@ create procedure sp_registrar
 @Edad int,
 @Usuario varchar(50),
 @Contraseña varchar(max),
-@Cod_Rol int,
+@Id_Rol int,
 @Patron varchar (50)
 as begin
-insert  into Usuarios values (@Nombre , @Apellido , @Correo, @Edad , @Usuario , ENCRYPTBYPASSPHRASE (@Patron , @Contraseña) , @Cod_Rol)
+insert  into Usuarios values (@Nombre , @Apellido , @Correo, @Edad , @Usuario , ENCRYPTBYPASSPHRASE (@Patron , @Contraseña) , @Id_Rol)
 end
 
 create procedure sp_login
@@ -79,6 +79,19 @@ create procedure sp_login
 as begin
 select * from Usuarios where Usuario=@Usuario and CONVERT(varchar(50) , DECRYPTBYPASSPHRASE(@Patron , Contraseña))= @Contraseña
 end
+
+create procedure sp_permisos
+@Id_rol int
+as begin
+select Nombre_permiso, Estado from Roles_permisos inner join Permisos on Permisos.Id_Permiso=Roles_Permisos.Id_Permiso where Id_Rol=@Id_Rol
+end
+
+create procedure sp_datos
+as begin
+select* from Usuarios
+end
+
+
 
 
 
